@@ -1,0 +1,25 @@
+{
+	"name": "az_v_destinaion_ls_feed",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"destination_storage_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().destination_storage_name};EndpointSuffix=core.windows.net;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "az_v_kv_ls",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "az-v-secret1",
+				"secretVersion": "f1f3d270f797456b937188056e6efeb1"
+			}
+		}
+	}
+}
